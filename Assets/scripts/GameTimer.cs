@@ -11,7 +11,7 @@ public class GameTimer : MonoBehaviour {
 	private bool timerIsRunning = true;
 	public GameObject timesUp;
 	public GameObject playAgain;
-	public GameObject quit;
+	public GameObject Quit;
 
 	void Start () {
 		timer = GetComponent<Text> ();
@@ -35,7 +35,7 @@ public class GameTimer : MonoBehaviour {
 				timerIsRunning = false;
 				timesUp.SetActive (true);
 				playAgain.SetActive (true);
-				quit.SetActive (true);
+				Quit.SetActive (true);
 				//timer.text = "Game Over";
 			}
 		}
