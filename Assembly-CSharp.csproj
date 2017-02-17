@@ -46,7 +46,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\scripts\GameManagerScript.cs" />
      <Compile Include="Assets\scripts\GameTimer.cs" />
+     <Compile Include="Assets\scripts\IntrovertScript.cs" />
      <Compile Include="Assets\scripts\Play.cs" />
      <Compile Include="Assets\scripts\Quit.cs" />
      <Compile Include="Assets\scripts\StartMenu.cs" />
