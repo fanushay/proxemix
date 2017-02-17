@@ -28,7 +28,7 @@ public class GameTimer : MonoBehaviour {
 	void Update () {
 		if (timerIsRunning) {
 			myTimer -= Time.deltaTime;
-			timer.text = myTimer.ToString ("f0");
+			timer.text = myTimer.ToString ("TIMER: 0");
 			print (myTimer);
 			if (myTimer <= 0) {
 				myTimer = 0;
