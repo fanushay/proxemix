@@ -1,0 +1,43 @@
+﻿using System.Collections;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+public class GameTimer : MonoBehaviour {
+
+	public float myTimer = 45;
+	public Text timer;
+	private bool timerIsRunning = true;
+	public GameObject timesUp;
+	public GameObject playAgain;
+	public GameObject quit;
+
+	void Start () {
+		timer = GetComponent<Text> ();
+	}
+
+	//void CheckTimesUp(){
+	//    if (myTimer <= 0) {
+	//        timesUp.SetActive (true);
+	//    }
+	//}
+
+
+
+	void Update () {
+		if (timerIsRunning) {
+			myTimer -= Time.deltaTime;
+			timer.text = myTimer.ToString ("f0");
+			print (myTimer);
+			if (myTimer <= 0) {
+				myTimer = 0;
+				timerIsRunning = false;
+				timesUp.SetActive (true);
+				playAgain.SetActive (true);
+				quit.SetActive (true);
+				//timer.text = "Game Over";
+			}
+		}
+	}
+}
