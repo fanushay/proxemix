@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class SocialSpaceScript : MonoBehaviour
 {
-
+	
     //SpriteRenderer socSprite = GetComponent<SpriteRenderer>();
     public Color unComfyColor = new Color();
     public Color comfyColor = new Color();
 
+
+
     private int numBreach = 0;
 
+	
 
     void ChangeColor(Color newColor)
     {
         SpriteRenderer socRender = GetComponent<SpriteRenderer>();
         socRender.color = newColor;
     }
-
+	
+		
     void OnTriggerEnter2D(Collider2D collision)
     {
         numBreach++;
@@ -44,18 +48,22 @@ public class SocialSpaceScript : MonoBehaviour
             Debug.Log("Too Many In Social Space!");
             ChangeColor(unComfyColor);
         }
+		else ChangeColor(comfyColor);
     }
 
     // Use this for initialization
-    void Start()
-    {
 
 
-    }
+	void Start()
+	{
+	}
+
+	void Update()
+	{
+  
 
     // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
+}
+    
 }
