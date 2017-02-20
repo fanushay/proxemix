@@ -10,7 +10,7 @@ public class InputManager : MonoBehaviour
 	{
 		if (HasInput)
 		{
-			print ("DRAGGING");
+			//print ("DRAGGING");
 			DragOrPickUp();
 		}
 		else

@@ -13,6 +13,8 @@ public class SocialSpaceScript : MonoBehaviour
 
     private int numBreach = 0;
 
+	public bool amIHappy = false;
+
 	
 
     void ChangeColor(Color newColor)
@@ -34,6 +36,7 @@ public class SocialSpaceScript : MonoBehaviour
 
             Debug.Log("Too Many In Social Space!");
             ChangeColor(unComfyColor);
+			amIHappy = false;
         }
     }
 	//}
@@ -44,13 +47,16 @@ public class SocialSpaceScript : MonoBehaviour
         	numBreach--;
         	Debug.Log(numBreach);
 
-       		if (numBreach > 3)
-        	{
+		if (numBreach > 3) {
 
-            Debug.Log("Too Many In Social Space!");
-            ChangeColor(unComfyColor);
-        }
-		else ChangeColor(comfyColor);
+			Debug.Log ("Too Many In Social Space!");
+			ChangeColor (unComfyColor);
+			amIHappy = false;
+		} 
+		else {
+			ChangeColor (comfyColor);
+			amIHappy = true;
+		}
     }
 	//}
     // Use this for initialization

@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameManagerScript : MonoBehaviour
 {
-
+	public List<IntrovertScript> introverts = new List<IntrovertScript>();
+	public List<IntrovertScript> happyIntroverts = new List<IntrovertScript>();
+	public List<IntrovertScript> unhappyIntroverts = new List<IntrovertScript>();
 
     //Personal Space and Social Space Minimum and Maximum Values
     [Header("Introverts")]
@@ -78,7 +81,7 @@ public class GameManagerScript : MonoBehaviour
 
 
     // Use this for initialization
-    void Start()
+    /*void Start()
     {
         //for (int i = 0; i < numIntros; i++)
         //{
@@ -90,12 +93,20 @@ public class GameManagerScript : MonoBehaviour
             Instantiate(introvertPrefab, new Vector2(16, 1), transform.rotation);
         //}
 
-    }
+    }*/
 
     // Update is called once per frame
     void Update()
     {
-        
+		happyIntroverts.Clear ();
+		foreach (IntrovertScript eachIntrovert in introverts) {
+			if (eachIntrovert.amIHappy == true) {
+				happyIntroverts.Add (eachIntrovert);
+				if (happyIntroverts.Count == introverts.Count) {
+					Debug.Log ("You win");
+				}
+			}
+		}
       
           
        
