@@ -24,33 +24,35 @@ public class SocialSpaceScript : MonoBehaviour
 		
     void OnTriggerEnter2D(Collider2D collision)
     {
-        numBreach++;
-        Debug.Log(numBreach);
+		//if (collision.collider.tag=="social") {
+			numBreach++;
+        	Debug.Log(numBreach);
 
 
-        if (numBreach > 3)
-        {
+        	if (numBreach > 3)
+        	{
 
             Debug.Log("Too Many In Social Space!");
             ChangeColor(unComfyColor);
         }
     }
-
+	//}
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        numBreach--;
-        Debug.Log(numBreach);
+		//if (collision.collider.tag=="social") {
+        	numBreach--;
+        	Debug.Log(numBreach);
 
-        if (numBreach > 3)
-        {
+       		if (numBreach > 3)
+        	{
 
             Debug.Log("Too Many In Social Space!");
             ChangeColor(unComfyColor);
         }
 		else ChangeColor(comfyColor);
     }
-
+	//}
     // Use this for initialization
 
 

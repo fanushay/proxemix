@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
 	{
 		if (HasInput)
 		{
+			print ("DRAGGING");
 			DragOrPickUp();
 		}
 		else
@@ -19,7 +20,12 @@ public class InputManager : MonoBehaviour
 		}
 	}
 
-	Vector2 CurrentTouchPosition
+	float rounded(float num, float multiple)
+	{
+		return Mathf.Round (num / multiple) * multiple;
+	}
+		
+	Vector2 RawTouchPosition
 	{
 		get
 		{
@@ -29,17 +35,29 @@ public class InputManager : MonoBehaviour
 		}
 	}
 
+	Vector2 RoundedTouchPosition
+	{
+		get
+		{
+			Vector2 inputPos;
+			inputPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			inputPos.x = rounded (inputPos.x, snaptogrid.XSnap);
+			inputPos.y = rounded (inputPos.y, snaptogrid.YSnap);
+			return inputPos;
+		}
+	}
+
 	private void DragOrPickUp()
 	{
-		var inputPosition = CurrentTouchPosition;
-
+		var inputPosition = RoundedTouchPosition;
+		var rawInputPosition = RawTouchPosition;
 		if (draggingItem)
 		{
-			draggedObject.transform.position = inputPosition + touchOffset;
+			draggedObject.transform.position = inputPosition;// + touchOffset;
 		}
 		else
 		{
-			RaycastHit2D[] touches = Physics2D.RaycastAll(inputPosition, inputPosition, 1f);
+			RaycastHit2D[] touches = Physics2D.RaycastAll(rawInputPosition, rawInputPosition, 1.1f);
 			if (touches.Length > 0)
 			{
 				var hit = touches[0];
@@ -47,7 +65,7 @@ public class InputManager : MonoBehaviour
 				{
 					draggingItem = true;
 					draggedObject = hit.transform.gameObject;
-					touchOffset = (Vector2)hit.transform.position - inputPosition;
+					touchOffset = (Vector2)hit.transform.position - rawInputPosition;
 					draggedObject.transform.localScale = new Vector3(1.2f,1.2f,1.2f);
 				}
 			}
@@ -66,7 +84,7 @@ public class InputManager : MonoBehaviour
 	void DropItem()
 	{
 		draggingItem = false;
-		draggedObject.transform.localScale = new Vector3(1f,1f,1f);
-        draggedObject.transform.position = new Vector3(Mathf.Round(draggedObject.transform.position.x), Mathf.Round(transform.position.y), (draggedObject.transform.position.z));
+		draggedObject.transform.localScale = new Vector3(1.1f,1.1f,1.1f);
+//        draggedObject.transform.position = new Vector3(Mathf.Round(draggedObject.transform.position.x), Mathf.Round(transform.position.y), (draggedObject.transform.position.z));
     }
 }
