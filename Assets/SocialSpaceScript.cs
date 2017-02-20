@@ -28,7 +28,7 @@ public class SocialSpaceScript : MonoBehaviour
         Debug.Log(numBreach);
 
 
-        if (numBreach > 1)
+        if (numBreach > 2)
         {
 
             Debug.Log("Too Many In Social Space!");
@@ -42,7 +42,7 @@ public class SocialSpaceScript : MonoBehaviour
         numBreach--;
         Debug.Log(numBreach);
 
-        if (numBreach > 1)
+        if (numBreach > 2)
         {
 
             Debug.Log("Too Many In Social Space!");
