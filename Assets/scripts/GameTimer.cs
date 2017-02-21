@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +11,9 @@ public class GameTimer : MonoBehaviour {
 	public GameObject timesUp;
 	public GameObject playAgain;
 	public GameObject Quit;
+	public GameObject youWin; 
+
+
 
 	void Start () {
 		timer = GetComponent<Text> ();
@@ -38,6 +40,12 @@ public class GameTimer : MonoBehaviour {
 				Quit.SetActive (true);
 				//timer.text = "Game Over";
 			}
+//			if(youWin.activeSelf == true){
+//				timerIsRunning = false;
+//			}
 		}
-	}
+		}
+			
+
+		
 }

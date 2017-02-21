@@ -8,6 +8,8 @@ public class GameManagerScript : MonoBehaviour
 	public List<IntrovertScript> introverts = new List<IntrovertScript>();
 	public List<IntrovertScript> happyIntroverts = new List<IntrovertScript>();
 	public List<IntrovertScript> unhappyIntroverts = new List<IntrovertScript>();
+	public GameObject youWin;
+
 
     //Personal Space and Social Space Minimum and Maximum Values
     [Header("Introverts")]
@@ -104,6 +106,7 @@ public class GameManagerScript : MonoBehaviour
 				happyIntroverts.Add (eachIntrovert);
 				if (happyIntroverts.Count == introverts.Count) {
 					Debug.Log ("You win");
+					youWin.SetActive (true);
 				}
 			}
 		}
