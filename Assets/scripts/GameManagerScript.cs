@@ -100,15 +100,29 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
 		happyIntroverts.Clear ();
+		unhappyIntroverts.Clear ();
+
 		foreach (IntrovertScript eachIntrovert in introverts) {
+
 			if (eachIntrovert.amIHappy == true) {
 				happyIntroverts.Add (eachIntrovert);
 				if (happyIntroverts.Count == introverts.Count) {
 					Debug.Log ("You win");
 					youWin.SetActive (true);
 				}
+
+
 			}
+
+			if (eachIntrovert.amIHappy == false) {
+				unhappyIntroverts.Add (eachIntrovert);
+
+			}
+
+	
+
 		}
       
           
