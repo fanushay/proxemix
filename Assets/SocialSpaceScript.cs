@@ -13,7 +13,7 @@ public class SocialSpaceScript : MonoBehaviour
 
     private int numBreach = 0;
 
-	public bool amIHappy;
+	public bool amIHappy = false;
 
 	
 
@@ -37,7 +37,6 @@ public class SocialSpaceScript : MonoBehaviour
             Debug.Log("Too Many In Social Space!");
             ChangeColor(unComfyColor);
 			amIHappy = false;
-
         }
     }
 	//}
@@ -65,19 +64,11 @@ public class SocialSpaceScript : MonoBehaviour
 
 	void Start()
 	{
-
-		if (numBreach > 3) {
-
-			amIHappy = false;
-		} else {
-			amIHappy = true;
-		}
 	}
 
 	void Update()
 	{
   
-
 
     // Update is called once per frame
     
