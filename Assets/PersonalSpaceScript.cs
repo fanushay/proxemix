@@ -62,6 +62,12 @@ public class PersonalSpaceScript : MonoBehaviour
 
 	void Start()
 	{
+		if (numBreach > 3) {
+
+			amIHappy = false;
+		} else {
+			amIHappy = true;
+		}
 	}
 
 	void Update()
