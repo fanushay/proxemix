@@ -32,13 +32,17 @@ public class GameTimer : MonoBehaviour {
 			myTimer -= Time.deltaTime;
 			timer.text = myTimer.ToString ("TIMER: 0");
 			//print (myTimer);
-			if (myTimer <= 0) {
-				myTimer = 0;
-				timerIsRunning = false;
-				timesUp.SetActive (true);
-				playAgain.SetActive (true);
-				Quit.SetActive (true);
-				//timer.text = "Game Over";
+				if (youWin.activeSelf == true) {
+					timerIsRunning = false;
+
+				if (myTimer <= 0) {
+					myTimer = 0;
+					timerIsRunning = false;
+					timesUp.SetActive (true);
+					playAgain.SetActive (true);
+					Quit.SetActive (true);
+					//timer.text = "Game Over";
+				}
 			}
 //			if(youWin.activeSelf == true){
 //				timerIsRunning = false;
