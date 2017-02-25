@@ -22,8 +22,7 @@ public class InputManager : MonoBehaviour
 
 	float rounded(float num, float multiple)
 	{
-		return num;
-		//return Mathf.Round (num / multiple) * multiple;
+		return Mathf.Round (num / multiple) * multiple;
 	}
 		
 	Vector2 RawTouchPosition
