@@ -30,7 +30,7 @@ public class PersonalSpaceScript : MonoBehaviour
         Debug.Log(numBreach);
 
 
-        if (numBreach > 2)
+        if (numBreach > 1)
         {
 
             Debug.Log("Too Many In Personal Space!");
@@ -45,7 +45,7 @@ public class PersonalSpaceScript : MonoBehaviour
         numBreach--;
         Debug.Log(numBreach);
 
-		if (numBreach > 2) {
+		if (numBreach > 1) {
 
 			Debug.Log ("Too Many In Personal Space!");
 			ChangeColor (unComfyColor);
