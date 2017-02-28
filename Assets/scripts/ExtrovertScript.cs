@@ -5,8 +5,8 @@ using UnityEngine;
 public class ExtrovertScript : MonoBehaviour {
 
 	public bool amIHappy;
-	public ExtrovertSocialSpace mySocialSpace;
-	public ExtrovertPersonalSpace myPersonalSpace;
+	public SocialSpaceScript_Extrovert mySocialSpace;
+	public PersonalSpaceScript_Extrovert myPersonalSpace;
 
 	void Update() {
 		if (mySocialSpace.amIHappy && myPersonalSpace.amIHappy) {
