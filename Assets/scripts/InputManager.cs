@@ -4,7 +4,9 @@ public class InputManager : MonoBehaviour
 {
 	private bool draggingItem = false;
 	private GameObject draggedObject;
+	private Rigidbody2D draggedObjectRigidbody;
 	private Vector2 touchOffset;
+	public float dragFollowSpeed;
 
 	void Update ()
 	{
@@ -54,7 +56,8 @@ public class InputManager : MonoBehaviour
 		var rawInputPosition = RawTouchPosition;
 		if (draggingItem)
 		{
-			draggedObject.transform.position = inputPosition;// + touchOffset;
+			draggedObjectRigidbody.MovePosition (Vector3.Lerp (draggedObject.transform.position, inputPosition, Time.deltaTime * dragFollowSpeed));
+			//draggedObject.transform.position = inputPosition;// + touchOffset;
 		}
 		else
 		{
@@ -64,10 +67,15 @@ public class InputManager : MonoBehaviour
 				var hit = touches[0];
 				if (hit.transform != null)
 				{
-					draggingItem = true;
-					draggedObject = hit.transform.gameObject;
-					touchOffset = (Vector2)hit.transform.position - rawInputPosition;
-					draggedObject.transform.localScale = new Vector3(1.2f,1.2f,1.2f);
+					if (hit.transform.gameObject.layer == LayerMask.NameToLayer("characters"))
+						{
+							draggingItem = true;
+							draggedObject = hit.transform.gameObject;
+							draggedObjectRigidbody = draggedObject.GetComponent<Rigidbody2D> ();
+							touchOffset = (Vector2)hit.transform.position - rawInputPosition;
+							draggedObject.transform.localScale = new Vector3(1.2f,1.2f,1.2f);
+
+						}
 				}
 			}
 		}
@@ -86,6 +94,7 @@ public class InputManager : MonoBehaviour
 	{
 		draggingItem = false;
 		draggedObject.transform.localScale = new Vector3(1.1f,1.1f,1.1f);
+		draggedObjectRigidbody.velocity = Vector2.zero;
 //        draggedObject.transform.position = new Vector3(Mathf.Round(draggedObject.transform.position.x), Mathf.Round(transform.position.y), (draggedObject.transform.position.z));
     }
 }
