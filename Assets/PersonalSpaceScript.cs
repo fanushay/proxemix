@@ -4,48 +4,48 @@ using UnityEngine;
 
 public class PersonalSpaceScript : MonoBehaviour
 {
-	
-    //SpriteRenderer socSprite = GetComponent<SpriteRenderer>();
-    public Color unComfyColor = new Color();
-    public Color comfyColor = new Color();
+
+	//SpriteRenderer socSprite = GetComponent<SpriteRenderer>();
+	public Color unComfyColor = new Color();
+	public Color comfyColor = new Color();
 
 	public bool amIHappy;
+	IntrovertScript myIntrovert;
+
+
+	private int numBreach = 0;
 
 
 
-    private int numBreach = 0;
-
-	
-
-    void ChangeColor(Color newColor)
-    {
-        SpriteRenderer persRender = GetComponent<SpriteRenderer>();
-        persRender.color = newColor;
-    }
-	
-		
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        numBreach++;
-        Debug.Log(numBreach);
+	void ChangeColor(Color newColor)
+	{
+		SpriteRenderer persRender = GetComponent<SpriteRenderer>();
+		persRender.color = newColor;
+	}
 
 
-        if (numBreach > 1)
-        {
+	void OnTriggerEnter2D(Collider2D collision)
+	{
+		numBreach++;
+		Debug.Log(numBreach);
 
-            Debug.Log("Too Many In Personal Space!");
-            ChangeColor(unComfyColor);
+
+		if (numBreach > 2)
+		{
+
+			Debug.Log("Too Many In Personal Space!");
+			ChangeColor(unComfyColor);
 			amIHappy = false;
-        }
-    }
+		}
+	}
 
 
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        numBreach--;
-        Debug.Log(numBreach);
+	void OnTriggerExit2D(Collider2D collision)
+	{
+		numBreach--;
+		Debug.Log(numBreach);
 
-		if (numBreach > 1) {
+		if (numBreach > 2) {
 
 			Debug.Log ("Too Many In Personal Space!");
 			ChangeColor (unComfyColor);
@@ -55,21 +55,43 @@ public class PersonalSpaceScript : MonoBehaviour
 			ChangeColor (comfyColor);
 			amIHappy = true;
 		}
-    }
+	}
 
-    // Use this for initialization
+	void ChangeState(bool shouldIBeHappy) {
+		if (shouldIBeHappy) {
+			ChangeColor (comfyColor);
+			amIHappy = true;
+
+		} else {
+			Debug.Log("Too Many In Social Space!");
+			ChangeColor(unComfyColor);
+			amIHappy = false;
+		}
+		myIntrovert.spaceStateChange ();
+	}
+
+	// Use this for initialization
 
 
 	void Start()
 	{
+
+		myIntrovert = GetComponentInParent<IntrovertScript> ();
+		if (numBreach > 0) {
+			ChangeState (false);
+		} else {
+			ChangeState (true);
+		}
+
+
 	}
 
 	void Update()
 	{
-  
 
-    // Update is called once per frame
-    
-}
-    
+
+		// Update is called once per frame
+
+	}
+
 }
